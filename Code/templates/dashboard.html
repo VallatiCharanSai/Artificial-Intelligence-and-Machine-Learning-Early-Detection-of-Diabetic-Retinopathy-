@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* Navbar */
+.navbar{
+    background:white;
+    padding:18px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+}
+
+.menu a{
+    margin-left:25px;
+    text-decoration:none;
+    color:#333;
+    font-size:14px;
+}
+
+/* Hero Section */
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px 60px;
+    background:#fdfaf6;
+}
+
+.hero-text{
+    max-width:45%;
+}
+
+.hero-text h1{
+    font-size:36px;
+    margin-bottom:20px;
+    color:#222;
+}
+
+.hero-text p{
+    font-size:15px;
+    color:#555;
+    line-height:1.6;
+}
+
+.hero-text .btn{
+    margin-top:25px;
+    padding:12px 22px;
+    background:#c9a27e;
+    color:white;
+    border:none;
+    border-radius:4px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* Image */
+.hero-img img{
+    width:420px;
+    border-radius:6px;
+}
+
+/* Section below */
+.section{
+    padding:60px;
+    background:white;
+    text-align:center;
+}
+
+.section h2{
+    margin-bottom:15px;
+}
+
+.section p{
+    color:#666;
+}
+
+/* Logout */
+.logout{
+    margin-top:25px;
+    padding:10px 20px;
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">DR</div>
+    <div class="menu">
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'profile' %}">Profile</a>
+        <a href="{% url 'dr_prediction' %}">Predict</a>
+        <a>Welcome, {{ user.username }}</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="hero-text">
+        <h1>Diabatic Retinopathy Prediction</h1>
+        <p>
+            Use intelligent AI models to analyze retinal images and detect Diabetic Retinopathy early.  
+Fast, accurate, and reliable predictions to support timely eye care and prevent vision loss.
+
+Early Detection • DR-Powered • Easy to Use
+        </p>
+        <button class="btn">Get Started</button>
+    </div>
+
+    <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="dashboard image">
+    </div>
+</div>
+
+<!-- Info Section -->
+<div class="section">
+    <h2>Dashboard Overview</h2>
+    <p>
+        Manage your profile, explore predictions, and access intelligent
+        healthcare tools — all from one place.
+    </p>
+
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="logout">Logout</button>
+    </form>
+</div>
+
+</body>
+</html>

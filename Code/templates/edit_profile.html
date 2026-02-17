@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.box{
+    background:#fff;
+    padding:30px;
+    width:350px;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+input,button{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+}
+button{
+    background:#00b894;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+button:hover{background:#019875;}
+.msg{color:green;text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Edit Profile</h2>
+<p class="msg">{{ msg }}</p>
+
+<form method="post">
+{% csrf_token %}
+<input name="username" value="{{ user.username }}">
+<input name="mail" value="{{ user.mail }}">
+<button>Update</button>
+</form>
+<p><a href="{% url 'profile' %}"> back</a></p>
+</body>
+</div>
+
+</body>
+</html>

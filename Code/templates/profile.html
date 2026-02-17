@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Profile</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* Navbar */
+.navbar{
+    background:white;
+    padding:18px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+}
+
+.menu span{
+    margin-left:25px;
+    font-size:14px;
+    color:#333;
+}
+
+/* Profile Section */
+.profile{
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+}
+
+.profile-card{
+    background:white;
+    width:700px;
+    display:flex;
+    border-radius:8px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+/* Left */
+.profile-left{
+    width:35%;
+    background:#fdfaf6;
+    padding:40px;
+    text-align:center;
+}
+
+.avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#c9a27e;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:40px;
+    font-weight:600;
+}
+
+.profile-left h3{
+    margin-top:15px;
+}
+
+/* Right */
+.profile-right{
+    width:65%;
+    padding:40px;
+}
+
+.info{
+    margin-bottom:20px;
+}
+
+.info label{
+    font-size:13px;
+    color:#777;
+}
+
+.info p{
+    font-size:15px;
+    margin-top:5px;
+    color:#222;
+}
+
+.edit-btn{
+    margin-top:20px;
+    padding:12px 22px;
+    background:#c9a27e;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.edit-btn:hover{
+    background:#b18b6a;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">DR</div>
+    <div class="menu">
+        <span><a href="{% url 'dashboard' %}">home</a></span>
+        <span>Welcome, {{ user.username }}</span>
+    </div>
+</div>
+
+<!-- Profile Card -->
+<div class="profile">
+    <div class="profile-card">
+
+        <!-- Left -->
+        <div class="profile-left">
+            <div class="avatar">
+                {{ user.username|slice:":1"|upper }}
+            </div>
+            <h3>{{ user.username }}</h3>
+            <p>User Account</p>
+        </div>
+
+        <!-- Right -->
+        <div class="profile-right">
+
+            <div class="info">
+                <label>Username:</label>
+                <p>{{ user.username }}</p>
+            </div>
+
+            <div class="info">
+                <label>Email:</label>
+                <p>{{ user.mail }}</p>
+            </div>
+
+            <button class="edit-btn"><a href="{% url 'edit_profile' %}">Edit Profile</a></button>
+
+        </div>
+
+    </div>
+</div>
+ 
+</html>

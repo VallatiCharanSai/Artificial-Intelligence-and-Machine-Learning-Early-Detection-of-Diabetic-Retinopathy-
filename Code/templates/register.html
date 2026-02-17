@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #adc2e4, #9face6);
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.box{
+    width:340px;
+    padding:25px;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+h2{
+    margin-bottom:15px;
+    color:#333;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#6c63ff;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    background:#6c63ff;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#144ad2;
+}
+
+p{
+    margin-top:12px;
+    font-size:14px;
+}
+
+a{
+    text-decoration:none;
+}
+
+a button{
+    background:#00b894;
+}
+
+a button:hover{
+    background:#019875;
+}
+
+.msg{
+    color:red;
+    font-size:14px;
+}
+</style>
+
+
+</head>
+<body>
+<div class="box">
+<h2>Register</h2>
+<p style="color:red">{{ msg }}</p>
+<form method="post">
+{% csrf_token %}
+<input name="username" placeholder="Username"><br>
+<input name="password" type="password" placeholder="Password"><br>
+<input name="mail" type="mail" placeholder="mail"><br>
+<button>Register</button>
+</form>
+<br>
+
+<p>Already registered?</p>
+
+<a href="{% url 'login' %}">
+    <button type="button">Login</button>
+</a>
+</div>
+</body>
+</html>
